@@ -13,7 +13,7 @@ import haversine
 def stations_by_distance(stations, p):
     list = []
     for station in stations:
-        distance = haversine(station, p)
+        distance = haversine(station.coord, p)
         list.append(tuple(station, distance))
 
     return sorted_by_key(list, 1)

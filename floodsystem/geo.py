@@ -58,7 +58,7 @@ def stations_within_radius(stations, centre, r):
 def rivers_with_station(stations):
     lst = []
     for i in stations:
-        if i.river: 
+        if i.river in lst: 
             pass
         else:
             lst.append(i.river)
@@ -75,11 +75,12 @@ def stations_by_river(stations):
         for station in stations:
             if river == station.river:
                 if river not in dict.keys():
-                    dict[river] = station.name
+                    dict[river] = [station.name]
                 else:
-                    lst.append(dict[river])
-                    lst.append(river)
-                    dict[river] = sorted(lst)
+                    for j in dict[river]:
+                        lst.append(j)
+                    lst.append(station.name)
+                    dict[river] = lst
                     lst = []
             else:
                 pass

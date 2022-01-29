@@ -18,5 +18,7 @@ def task1Db(stations):
     print(sorted(dict.get("River Thames")))
 
 
-task1Db(build_station_list())
-print(sorted(stations_by_river(build_station_list())))
+#task1Db(build_station_list())
+#print(sorted(stations_by_river(build_station_list())))
+
+print(rivers_with_station(build_station_list())) 

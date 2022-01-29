@@ -58,9 +58,7 @@ def stations_within_radius(stations, centre, r):
 def rivers_with_station(stations):
     lst = []
     for i in stations:
-        if i.river in lst or i.name is None:
-            pass
-        elif i.river is None or i.name is None:
+        if i.river: 
             pass
         else:
             lst.append(i.river)

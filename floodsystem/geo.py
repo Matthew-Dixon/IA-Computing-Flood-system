@@ -51,3 +51,40 @@ def stations_within_radius(stations, centre, r):
             lst.append(station)
     
     return lst
+
+
+# Task 1D
+
+def rivers_with_station(stations):
+    lst = []
+    for i in stations:
+        if i.river in lst or i.name is None:
+            pass
+        elif i.river is None or i.name is None:
+            pass
+        else:
+            lst.append(i.river)
+    
+    return lst
+
+
+def stations_by_river(stations):
+    dict = {}
+    rivers = rivers_with_station(stations)
+    lst = []
+    
+    for river in rivers:
+        for station in stations:
+            if river == station.river:
+                if river not in dict.keys():
+                    dict[river] = station.name
+                else:
+                    lst.append(dict[river])
+                    lst.append(river)
+                    dict[river] = sorted(lst)
+                    lst = []
+            else:
+                pass
+    
+    return dict
+

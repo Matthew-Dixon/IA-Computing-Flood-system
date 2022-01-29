@@ -8,9 +8,11 @@ geographical data.
 
 from .utils import sorted_by_key  # noqa
 
+
+# Task 1B
 import math
 
-# import haversine 
+# import haversine (failed)
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -38,3 +40,14 @@ def stations_by_distance(stations, p):
         lst.append((station, distance))
 
     return sorted_by_key(lst, 1)
+
+# Task 1C
+
+def stations_within_radius(stations, centre, r):
+    lst = []
+    for station in stations:
+        distance = haversine(station.coord[0], station.coord[1], centre[0], centre[1])
+        if distance <= r:
+            lst.append(station)
+    
+    return lst

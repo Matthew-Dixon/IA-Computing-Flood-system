@@ -75,11 +75,11 @@ def stations_by_river(stations):
         for station in stations:
             if river == station.river:
                 if river not in dict.keys():
-                    dict[river] = [station.name]
+                    dict[river] = [station] 
                 else:
                     for j in dict[river]:
                         lst.append(j)
-                    lst.append(station.name)
+                    lst.append(station) 
                     dict[river] = lst
                     lst = []
             else:

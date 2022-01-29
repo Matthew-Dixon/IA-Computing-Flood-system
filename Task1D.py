@@ -14,9 +14,25 @@ task1Da(build_station_list())
 
 def task1Db(stations):
     dict = stations_by_river(stations)
-    print(sorted(dict.get("River Aire")))
-    print(sorted(dict.get("River Cam")))
-    print(sorted(dict.get("River Thames")))
+    river_aire = []
+    river_cam = []
+    river_thames = []
+
+    # River Aire
+    for i in dict.get("River Aire"):
+        river_aire.append(i.name)
+    
+    # River Cam
+    for j in dict.get("River Cam"):
+        river_cam.append(j.name)
+    
+    for k in dict.get("River Thames"):
+        river_thames.append(k.name)
+
+
+    print(sorted(river_aire))
+    print(sorted(river_cam))
+    print(sorted(river_thames))
 
 
 task1Db(build_station_list())

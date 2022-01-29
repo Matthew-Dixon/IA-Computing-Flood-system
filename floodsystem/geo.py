@@ -6,7 +6,7 @@ geographical data.
 
 """
 
-from .utils import sorted_by_key  # noqa
+from floodsystem.utils import sorted_by_key  # noqa
 
 
 # Task 1B
@@ -87,3 +87,23 @@ def stations_by_river(stations):
     
     return dict
 
+
+def rivers_by_station_number(stations, N):
+
+    """Determines the N rivers with the greatest number of monitoring stations.
+    Returns a list of (river name, number of stations) tuples,sorted by the number of stations.
+    In the case that there are more rivers with the same number of stations as the N th entry, these rivers are included in the list."""
+    
+    rivers=rivers_with_station(stations)
+    fulllist=[]
+    dict = stations_by_river(stations)
+    for r in rivers:
+        entry=(r,len(dict[r]))
+        fulllist.append(entry)
+    fulllist = sorted_by_key(fulllist, 1,reverse=True)
+    while fulllist[N-1][1] == fulllist[N][1]:
+        N += 1
+        pass
+    list=fulllist[0:N]
+
+    return list

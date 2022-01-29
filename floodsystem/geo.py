@@ -6,7 +6,7 @@ geographical data.
 
 """
 
-from utils import sorted_by_key  # noqa
+from .utils import sorted_by_key  # noqa
 
 import math
 
@@ -27,14 +27,14 @@ def haversine(lon1, lat1, lon2, lat2):
     dlon = lon2 - lon1 
     dlat = lat2 - lat1 
     a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
-    c = 2 * math.asin(sqrt(a)) 
+    c = 2 * math.asin(math.sqrt(a)) 
     r = 6371 
     return c * r
 
 def stations_by_distance(stations, p):
-    list = []
+    lst = []
     for station in stations:
         distance = haversine(station.coord[0], station.coord[1], p[0], p[1])
-        list.append(tuple(station, distance))
+        lst.append((station, distance))
 
-    return sorted_by_key(list, 1)
+    return sorted_by_key(lst, 1)

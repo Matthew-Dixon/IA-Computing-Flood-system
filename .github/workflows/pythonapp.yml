@@ -25,12 +25,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install  flake8 matplotlib pytest requests
-          pip install haversine
+          pip install  flake8 matplotlib pytest requests haversine
 
 
-      # - name: Lint with flake8
-      #   run: flake8 --statistics *.py
+       - name: Lint with flake8
+         run: flake8 --statistics *.py
 
       - name: Run unit tests using pytest
         run: pytest -v
@@ -41,6 +40,10 @@ jobs:
           python Task1B.py
           python Task1C.py
           python Task1D.py
+          python Task1E.py
+          python Task1F.py
+
+
 
       - name: Run Deliverable 2 code
         run: |

@@ -5,6 +5,7 @@ inconsistent=inconsistent_typical_range_stations(stations)
 l=[]
 for s in inconsistent:
     l.append(s.name)
+print('\nTask1F')
 print('Inconsistent Stations:',l)
 
 

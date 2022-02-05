@@ -34,7 +34,7 @@ def test_typical_range_consistent():
     m_id = "test-m-id"
     label = "some station"
     coord = (-2.0, 4.0)
-    trange1 = (5.5,10.1)
+    trange1 = (55.5,10.1)
     trange2= (0.3,5.0)
     trange3 = None
     river = "River X"
@@ -48,6 +48,6 @@ def test_typical_range_consistent():
 
 def test_inconsistent_typical_range_stations():
     stations = build_station_list()
-    x = test_inconsistent_typical_range_stations(stations)
+    x = inconsistent_typical_range_stations(stations)
     
     assert type(x) is list 

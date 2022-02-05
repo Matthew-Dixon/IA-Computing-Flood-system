@@ -6,6 +6,6 @@ inconsistent=inconsistent_typical_range_stations(stations)
 l=[]
 for s in inconsistent:
     l.append(s.name)
-print('/nTask1f:/nInconsistent Stations:',l)
+print('\nTask1F:\nInconsistent Stations:',l)
 
 

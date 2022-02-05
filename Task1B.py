@@ -16,7 +16,7 @@ def task1B():
     for j in furthest:
         lst_furthest.append((j[0].name, j[0].town, j[1]))
 
-    print(f"Closest 10 stations: {lst_closest}")
+    print(f"\nTask1B:\nClosest 10 stations: {lst_closest}")
     print(f"Furthest 10 stations: {lst_furthest}")
 
 task1B()

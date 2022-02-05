@@ -5,7 +5,7 @@ from floodsystem.geo import rivers_with_station
 def task1Da(stations):
     lst = rivers_with_station(stations)
 
-    print(f"Rivers with at least 1 monitoring station: {len(lst)}")
+    print(f"\nTask1D:\nRivers with at least 1 monitoring station: {len(lst)}")
     print(f"First 10 rivers: {sorted(lst)[:10]}")
 
 

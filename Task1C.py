@@ -7,7 +7,7 @@ def task1C(stations, centre, r):
     for i in lst1:
         lst.append(i.name)
     
-    print(sorted(lst))
+    print('\nTask1C:\n',sorted(lst))
 
 
 

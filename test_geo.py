@@ -4,6 +4,8 @@ from floodsystem.geo import stations_by_distance
 from floodsystem.geo import stations_within_radius
 from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
+from floodsystem.geo import rivers_by_station_number
+
 
 def test_stations_by_distance():
     # Check output type
@@ -37,3 +39,11 @@ def test_stations_by_river():
     x = stations_by_river(stations) 
 
     assert type(x) is dict
+
+def test_rivers_by_station_number():
+    N=9
+    stations = build_station_list()
+    x = rivers_by_station_number(stations,N) 
+    
+    assert type(x) is list
+    assert len(x) >=N

@@ -11,7 +11,7 @@ def task2E():
 
     output = stations_level_over_threshold(stations, 0.8)
     
-    # The first datum is broken as it is absurdly high, so i used the next 5 
+    # The first datum is absurdly high, so i used the next 5 
     plots = output[1:6]
 
     dt = 10

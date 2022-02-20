@@ -13,6 +13,7 @@ def task2E():
     
     # The first datum is absurdly high, so i used the next 5 
     plots = output[1:6]
+    #plots = output[:5]
 
     dt = 10
 

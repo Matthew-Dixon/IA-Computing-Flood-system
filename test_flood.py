@@ -17,8 +17,7 @@ def test_stations_highest_rel_level():
     stations = build_station_list()
     update_water_levels(stations)
     N=12
-    x= stations_highest_rel_level(stations,N)
+    x = stations_highest_rel_level(stations,N)
     assert type(x) is list
     assert len(x) == N
-    assert x[0][1] >= x[1][1]
-    
+    assert x[0].relative_water_level() >= x[1].relative_water_level()

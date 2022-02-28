@@ -6,49 +6,34 @@ def floodwarning(stations, tol_severe, tol_high, tol_moderate, tol_low):
 
 
     for i in stations:
-        if i.town in town_list:
-            pass
-        else:
+        if not i.town in town_list and not i.town is None:
             town_list.append(i.town)
+    
     
     
     # Sorting stations into towns 
     # Creating a dictionary of towns as keys and empty lists as the values
-    town_stations_dict = dict.fromkeys(town_list, [])
+    #town_stations_dict = dict.fromkeys(town_list, [])
+    town_stations_dict = {k: [] for k in town_list}
     
-    #####
+    
+
     # Adding the water levels of the stations to the town keys
-    for station in stations: 
-        for town in town_stations_dict:
-            if station.town == town:
-                town_stations_dict[town].append(station.latest_level)
-            else:
-                pass
-    #####
 
-    print(town_stations_dict)
-
-    # Removing all empty data
-    for n in town_stations_dict:
-        lst = town_stations_dict[n]
-        town_stations_dict[n] = [x for x in lst if x is not None] 
-
-        """ 
-        lst = []
-        for num in town_stations_dict[n]:
-            if num != None:
-                lst.append(num)
-            else: 
-                pass
-            town_stations_dict[n] = lst
-            lst = []
-        """
-    #print(town_stations_dict)
+    for station in stations:
+        if station.relative_water_level() is not None and station.town is not None:
+            town_stations_dict[station.town].append(station.relative_water_level())
+        
 
 
-    # Finding the mean water level of each town
+    #Finding the mean water level of each town
     for k in town_stations_dict:
-        town_stations_dict[k] = sum(town_stations_dict[k]) / len(town_stations_dict[k])
+        if len(town_stations_dict[k]) != 0: 
+            town_stations_dict[k] = sum(town_stations_dict[k]) / len(town_stations_dict[k])
+        else:
+             town_stations_dict[k] = 0
+    
+
     
     # Output
     severe = []
@@ -63,15 +48,15 @@ def floodwarning(stations, tol_severe, tol_high, tol_moderate, tol_low):
 
     for j in town_stations_dict:
         if town_stations_dict[j] > tol_severe:
-            severe.append(f"{j} ({town_stations_dict[j]})")
+            severe.append(j)
         elif town_stations_dict[j] > tol_high:
-            high.append(f"{j} ({town_stations_dict[j]})")
+            high.append(j)
         elif town_stations_dict[j] > tol_moderate:
-            moderate.append(f"{j} ({town_stations_dict[j]})")
+            moderate.append(j)
         elif town_stations_dict[j] > tol_low:
-            low.append(f"{j} ({town_stations_dict[j]})")
-        else:
-            low.append(f"{j} ({town_stations_dict[j]})")
+            low.append(j)
+        
+       
 
     return severe, high, moderate, low
 

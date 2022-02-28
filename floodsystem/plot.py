@@ -26,13 +26,13 @@ def plot_water_levels(station, dates, levels):
 
 def plot_water_levels_with_fit(station, dates, levels, p):
 
-    plt.plot(dates, levels, color="b", label="Water level")
+    plt.plot(dates, levels, color="b", label="Relative Water level")
     (poly,d0)= polyfit(dates, levels, p)
     plevels= poly(matplotlib.dates.date2num(dates)-d0)
     plt.plot(dates, plevels, color="r", label="Polynomial fit")
 
     plt.xlabel("Date")
-    plt.ylabel("Water level (m)")
+    plt.ylabel("Relative Water level")
     plt.xticks(rotation=90)
     plt.title(station.name)
 

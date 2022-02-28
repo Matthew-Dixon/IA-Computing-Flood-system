@@ -14,9 +14,9 @@ def task2G():
 
     severe, high, moderate, low = floodwarning(stations, tol_severe, tol_high, tol_moderate, tol_low)
 
-    print(f"Severe: {severe}")
-    print(f"High: {high}")
-    print(f"Moderate: {moderate}")
-    print(f"Low: {low}")
+    #print(f"Severe: {severe}")
+    #print(f"High: {high}")
+    #print(f"Moderate: {moderate}")
+    #print(f"Low: {low}")
 
 task2G()

@@ -15,16 +15,23 @@ def floodwarning(stations, tol_severe, tol_high, tol_moderate, tol_low):
     # Sorting stations into towns 
     # Creating a dictionary of towns as keys and empty lists as the values
     town_stations_dict = dict.fromkeys(town_list, [])
-    print(town_stations_dict)
     
+    #####
     # Adding the water levels of the stations to the town keys
-    for station in stations:
-        town_stations_dict[station.town].append(station.latest_level)
+    for station in stations: 
+        for town in town_stations_dict:
+            if station.town == town:
+                town_stations_dict[town].append(station.latest_level)
+            else:
+                pass
+    #####
+
+    print(town_stations_dict)
 
     # Removing all empty data
     for n in town_stations_dict:
-        L = town_stations_dict[n]
-        town_stations_dict[n] = [x for x in L if x is not None] 
+        lst = town_stations_dict[n]
+        town_stations_dict[n] = [x for x in lst if x is not None] 
 
         """ 
         lst = []
@@ -36,15 +43,14 @@ def floodwarning(stations, tol_severe, tol_high, tol_moderate, tol_low):
             town_stations_dict[n] = lst
             lst = []
         """
+    #print(town_stations_dict)
 
 
     # Finding the mean water level of each town
     for k in town_stations_dict:
         town_stations_dict[k] = sum(town_stations_dict[k]) / len(town_stations_dict[k])
     
-    #print(town_stations_dict)
-
-    
+    # Output
     severe = []
     high = []
     moderate = []
@@ -57,14 +63,15 @@ def floodwarning(stations, tol_severe, tol_high, tol_moderate, tol_low):
 
     for j in town_stations_dict:
         if town_stations_dict[j] > tol_severe:
-            severe.append(f"{n} ({town_stations_dict[j]})")
+            severe.append(f"{j} ({town_stations_dict[j]})")
         elif town_stations_dict[j] > tol_high:
-            high.append(f"{n} ({town_stations_dict[j]})")
+            high.append(f"{j} ({town_stations_dict[j]})")
         elif town_stations_dict[j] > tol_moderate:
-            moderate.append(f"{n} ({town_stations_dict[j]})")
+            moderate.append(f"{j} ({town_stations_dict[j]})")
         elif town_stations_dict[j] > tol_low:
-            low.append(f"{n} ({town_stations_dict[j]})")
+            low.append(f"{j} ({town_stations_dict[j]})")
         else:
-            low.append(f"{n} ({town_stations_dict[j]})")
+            low.append(f"{j} ({town_stations_dict[j]})")
 
     return severe, high, moderate, low
+

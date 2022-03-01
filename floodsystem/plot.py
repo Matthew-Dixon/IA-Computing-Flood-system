@@ -30,6 +30,8 @@ def plot_water_levels_with_fit(station, dates, levels, p):
     (poly,d0)= polyfit(dates, levels, p)
     plevels= poly(matplotlib.dates.date2num(dates)-d0)
     plt.plot(dates, plevels, color="r", label="Polynomial fit")
+    plt.axhline(y = station.typical_range[0], color="g", label="Typical low")
+    plt.axhline(y = station.typical_range[1], color="r", label="Typical high")
 
     plt.xlabel("Date")
     plt.ylabel("Relative Water level")
